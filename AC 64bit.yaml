@@ -1,0 +1,81 @@
+description: Asheron's Call 64BIT setup
+game_slug: asherons-call
+installer_slug: asherons-call-64BIT
+name: Asheron's Call
+notes: "Set/check if wine is set to GE-Proton (Latest) runner before starting setup\r\n\r\nInstall Manuel\r\nhttps://github.com/Aircorian/Asherons-call/"
+runner: wine
+script:
+  files:
+  - ACInstaller: https://web.archive.org/web/20201121104423/http://content.turbine.com/sites/clientdl/ac1/ac1install.exe
+  - DatFiles: https://archive.org/download/ac-updates/ac-updates.zip
+  - tl_setup:
+      filename: ThwargLauncherInstaller.exe
+      url: http://www.thwargle.com/thwarglauncher/updates/ThwargLauncherInstaller.exe?x=209&y=56
+  - decal_setup: https://www.decaldev.com/releases/2983/Decal.msi
+  - vir_setup: http://www.virindi.net/plugins/updates/VirindiInstaller1008.zip
+  - dx2010: https://lutris.net/files/tools/directx-2010.tar.gz
+  - VC2005SP1: https://web.archive.org/web/20190419092632/https://download.microsoft.com/download/e/1/c/e1c773de-73ba-494a-a5ba-f24906ecf088/vcredist_x86.exe
+  game:
+    exe: drive_c/Program Files (x86)/Thwargle Games/ThwargLauncher/ThwargLauncher.exe
+    launch_configs:
+    - exe: $GAMEDIR/drive_c/Program Files (x86)/Decal 3.0/DenAgent.exe
+      name: Decal
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      description: Preparing wineprefix...
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      app: "dotnet48"
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: "dotnet11"
+      arch: win32
+      name: winetricks
+      prefix: $GAMEDIR
+  - extract:
+      dst: $CACHE/dxsetup
+      file: dx2010
+  - task:
+      args: /silent
+      executable: $CACHE/dxsetup/DXSETUP.exe
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      app: vcrun2019
+      name: winetricks
+      silent: true
+  - task:
+      args: /Q
+      executable: VC2005SP1
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      executable: ACInstaller
+      name: wineexec
+      prefix: $GAMEDIR
+      arch: win32
+  - extract:
+      dst: $GAMEDIR/drive_c/Turbine/Asheron's Call
+      file: DatFiles
+  - task:
+      executable: decal_setup
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      executable: tl_setup
+      name: wineexec
+      prefix: $GAMEDIR
+  - extract:
+      dst: $CACHE
+      file: vir_setup
+  - task:
+      executable: $CACHE/VirindiInstaller.exe
+      name: wineexec
+      prefix: $GAMEDIR
+slug: asherons-call-64BIT
+steamid: null
+version: 32BIT
+year: 1999
