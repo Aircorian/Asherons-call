@@ -83,7 +83,7 @@ script:
       name: wineexec
       prefix: $GAMEDIR
       arch: win32
-slug: asherons-call-beta-4
+slug: asherons-call-32BIT
 steamid: null
 version: 32BIT
 year: 1999
