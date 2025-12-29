@@ -2,7 +2,7 @@ description: Asheron's Call 32BIT setup
 game_slug: asherons-call
 installer_slug: asherons-call-32BIT
 name: Asheron's Call
-notes: "Set/check if wine is set to wine-ge-8-26-x86_64(standerd) runner before starting setup\r\n\r\nInstall Manuel\r\nhttps://drive.google.com/file/d/1lqxbXHqkxfd-IpPAKgZFZpBlLwTrtajn/view?usp=drive_link"
+notes: "Set/check if wine is set to wine-ge-8-26-x86_64(standerd) runner before starting setup\r\n\r\nInstall Manuel\r\nhttps://github.com/Aircorian/Asherons-call/"
 runner: wine
 script:
   files:
