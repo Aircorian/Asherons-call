@@ -76,5 +76,5 @@ script:
       prefix: $GAMEDIR
 slug: asherons-call-64BIT
 steamid: null
-version: 32BIT
+version: 64BIT
 year: 1999
