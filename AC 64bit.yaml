@@ -56,7 +56,6 @@ script:
       executable: ACInstaller
       name: wineexec
       prefix: $GAMEDIR
-      arch: win32
   - extract:
       dst: $GAMEDIR/drive_c/Turbine/Asheron's Call
       file: DatFiles
