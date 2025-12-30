@@ -13,6 +13,7 @@ script:
       url: http://www.thwargle.com/thwarglauncher/updates/ThwargLauncherInstaller.exe?x=209&y=56
   - decal_setup: https://www.decaldev.com/releases/2983/Decal.msi
   - vir_setup: http://www.virindi.net/plugins/updates/VirindiInstaller1008.zip
+  - ub_setup: https://gitlab.com/utilitybelt/utilitybelt.gitlab.io/uploads/f24f9359893592252815818da7b3b7ba/UtilityBeltInstaller-0.2.7.exe
   - dx2010: https://lutris.net/files/tools/directx-2010.tar.gz
   - VC2005SP1: https://web.archive.org/web/20190419092632/https://download.microsoft.com/download/e/1/c/e1c773de-73ba-494a-a5ba-f24906ecf088/vcredist_x86.exe
   game:
@@ -80,6 +81,11 @@ script:
       file: vir_setup
   - task:
       executable: $CACHE/VirindiInstaller.exe
+      name: wineexec
+      prefix: $GAMEDIR
+      arch: win32
+  - task:
+      executable: ub_setup
       name: wineexec
       prefix: $GAMEDIR
       arch: win32
